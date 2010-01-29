@@ -7,22 +7,18 @@
 import codecs
 import pickle
 import nltk.data
-
 from BeautifulSoup import BeautifulSoup
 from nltk.tokenize.punkt import PunktSentenceTokenizer
 from nltk.tokenize.punkt import PunktWordTokenizer
-from optparse import OptionParser
 from wikipydia import query_random_titles
 from wikipydia import query_text_rendered
 
+
 def main():
-    collect_wiki_corpus('korean', 'ko', 1000)
-    collect_wiki_corpus('hungarian', 'ru', 1000)
     collect_wiki_corpus('icelandic', 'is', 1000)
-    train_sentence_splitter('korean')
     train_sentence_splitter('icelandic')
-    train_sentence_splitter('hungarian')
     
+
 def collect_wiki_corpus(language, lang, num_items):
     """
     Download <n> random wikipedia articles in language <lang>
@@ -83,34 +79,4 @@ def test_tokenization():
     print '\n-----\n'.join(tokenizer.tokenize(hu_text.strip()))    
 
 if __name__ == "__main__":
- ##    parser = OptionParser()
-##     parser.add_option("-a", "--action", dest="action",
-##                       help="Action collect/train")
-##     parser.add_option("-q", "--quiet",
-##                   action="store_false", dest="verbose", default=True,
-##                   help="don't print status messages to stdout")
-##     (options, args) = parser.parse_args()
-
     main()
-
-## def query_random_titles(language='en', num_items=10):
-##   """
-##   action=query,list=random
-##   Queries wikipedia multiple times to get random articles
-##   (Max. limit is 10 titles at the time)
-##   """
-##   url = api_url % (language)
-##   query_args = {
-##       'action': 'query',
-##       'list': 'random',
-##       'format': 'json',
-##       'rnnamespace': '0',
-##       'rnlimit': '10',
-##   }
-  
-##   random_titles = []
-##   while len(random_titles) < num_items:
-##       json = _run_query(query_args, language)
-##       for random_page in json['query']['random']:
-##           random_titles.append(random_page['title'])
-##   return random_titles
