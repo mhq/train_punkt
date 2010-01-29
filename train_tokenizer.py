@@ -66,6 +66,9 @@ def train_sentence_splitter(lang):
 
 
 def test_tokenization():
+    """
+    Test Icelandic, Korean and Hungarian sentence splitting.
+    """
     is_text = "Hann var þríkvæntur. Fyrsta kona hans var Þorbjörg Þórarinsdóttir frá Múla í Aðaldal, f. 19. júlí 1786 á Myrká, d. 19. júlí 1846 á Völlum. Önnur kona Þorbjörg Bergsdóttir (1807-1851) frá Eyvindarstöðum í Sölvadal. Þriðja kona Guðrún Sigfúsdóttir (1812-1864). Hún var 32 árum yngri en brúðguminn, sem var 72 ára er hann kvæntist henni. Hans klaufi er ævintýri eftir H.C. Andersen. "
     tokenizer = nltk.data.load('tokenizers/punkt/icelandic.pickle')
     print '\n-----\n'.join(tokenizer.tokenize(is_text.strip()))
@@ -77,6 +80,7 @@ def test_tokenization():
     hu_text = """II. József (Bécs, 1741. március 13. – Bécs, 1790. február 20.) osztrák főherceg, Mária Terézia és I. Ferenc császár legidősebb fia. 1765-től német-római császár, 1780-tól magyar és cseh király, az első uralkodó, aki a Habsburg–Lotaringiai-házból származott."""
     tokenizer = nltk.data.load('tokenizers/punkt/hungarian.pickle')
     print '\n-----\n'.join(tokenizer.tokenize(hu_text.strip()))    
+
 
 if __name__ == "__main__":
     main()
