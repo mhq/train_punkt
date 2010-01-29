@@ -56,7 +56,7 @@ def train_sentence_splitter(lang):
 
     # Train tokenizer
     tokenizer = PunktSentenceTokenizer()
-    tokenizer.train(text, verbose=True)
+    tokenizer.train(text)
 
     # Dump pickled tokenizer
     pickle_file = "%s.pickle" % (lang)
